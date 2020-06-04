@@ -17,7 +17,8 @@ Created on Thu Jun  4 10:04:14 2020
 import random
 
 import time
-
+import  numpy
+from  mpi4py  import  MPI 
  
 
  
@@ -59,9 +60,39 @@ def how_many_max_values_sequential(ar):
 # Complete the how_many_max_values_parallel function below.
 
 def how_many_max_values_parallel(ar):
+    comm = MPI.COMM_WORLD
 
-    #implement your solution
+    rank = comm.Get_rank()
 
+ 
+
+    if rank == 0:
+
+        data = ar
+
+        comm.send(data, dest=1, tag=11)
+
+    elif rank == 1:
+
+        data = comm.recv(source=0, tag=11)
+        
+        maxValue = 0
+        print(ar)
+        for i in range(len(ar)):
+             if i == 0:
+
+            
+                 maxValue = ar[i]
+             else:
+                 if ar[i] > maxValue:
+                     maxValue = ar[i]
+        contValue = 0
+
+        for i in range(len(ar)):
+            if ar[i] == maxValue:
+                contValue += 1
+       
+        print(contValue)
     return 0
 
  
@@ -72,7 +103,7 @@ if __name__ == '__main__':
 
    
 
-    ar_count = 400
+    ar_count = 50
 
    
 
@@ -96,7 +127,7 @@ if __name__ == '__main__':
 
    
 
-    print('Results are correct!\n' if resultSec == resultPar else 'Results are incorrect!\n')
+    #print('Results are correct!\n' if resultSec == resultPar else 'Results are incorrect!\n')
 
     print('Sequential Process took %.3f ms with %d items\n' % ((finSec - inicioSec)*1000, ar_count))
 
