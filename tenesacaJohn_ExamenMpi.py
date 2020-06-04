@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  4 09:38:36 2020
+Created on Thu Jun  4 09:56:04 2020
 
 @author: usuario
 """
 
 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun  4 10:04:14 2020
+
+@author: usuario
+"""
 import random
 
 import time
-import multiprocessing
 
  
 
  
 
 def how_many_max_values_sequential(ar):
-
 
     #find max value of the list
 
@@ -54,54 +59,12 @@ def how_many_max_values_sequential(ar):
 # Complete the how_many_max_values_parallel function below.
 
 def how_many_max_values_parallel(ar):
- 
-    datos=[0,10,20,30,40]
-    p = multiprocessing.Pool(5)
-    #p.map(multi, datos)
-    #p.close()
-    #p.join()
-    print(p.map(multip, datos))
+
+    #implement your solution
+
     return 0
 
-def multip(datos):
-
-
-    #find max value of the list
-
-    maxValue = 0
-
-    for i in range(len(ar)):
-
-        if i == 0:
-
-            maxValue = ar[i]
-
-        else:
-
-            if ar[i] > maxValue:
-
-                maxValue = ar[i]
-
-    #find how many max values are in the list
-
-    contValue = 0
-
-    for i in range(len(ar)):
-
-        if ar[i] == maxValue:
-
-            contValue += 1
-
  
-
-    return contValue
-    
-
-
-
-    
-
-
 
 if __name__ == '__main__':
 
@@ -109,8 +72,7 @@ if __name__ == '__main__':
 
    
 
-    ar_count = 100
-    
+    ar_count = 400
 
    
 
